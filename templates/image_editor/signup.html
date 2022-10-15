@@ -1,7 +1,7 @@
 {% if user_list %}
     <ul>
     {% for user in user_list %}
-        <li><a href="/image_editor/{{ user.id }}/">{{ user.user_id }}</a></li>
+        <li><a href="{% url 'image_editor:detail' user.id %}">{{ user.user_id }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
