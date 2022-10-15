@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import User
 
 
 def index(request):
-    return HttpResponse("안녕하세요 이미지 에디터입니다.")
+    user_list = User.objects.order_by('create_date')
+    context = {'user_list': user_list}
+    return render(request, 'image_editor/signup.html', context)
+
