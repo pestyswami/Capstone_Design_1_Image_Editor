@@ -2,7 +2,7 @@ import environ
 
 from .base import *
 
-ALLOWED_HOSTS = ['3.37.58.70', 'pybo.kr', 'django.pybo.kr']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.125.173.195', 'imageeditorcapstone.tk']
 STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_DIRS = []
 DEBUG = False
