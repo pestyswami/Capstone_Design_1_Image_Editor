@@ -3,21 +3,23 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 
 from pybo.models import Question
-
+import logging
+logger = logging.getLogger('pybo')
 
 def index(request):
-    page = request.GET.get('page', '1')  # í˜ì´ì§€
-    kw = request.GET.get('kw', '')  # ê²€ìƒ‰ì–´
+    logger.info("INFO ·¹º§·Î Ãâ·Â")
+    page = request.GET.get('page', '1')  # ?˜?´ì§?
+    kw = request.GET.get('kw', '')  # ê²??ƒ‰?–´
     question_list = Question.objects.order_by('-create_date')
     if kw:
         question_list = question_list.filter(
-            Q(subject__icontains=kw) |  # ì œëª©
-            Q(content__icontains=kw) |  # ë‚´ìš©
-            Q(answer__content__icontains=kw) |  # ë‹µë³€ë‚´ìš©
-            Q(author__username__icontains=kw) |  # ì§ˆë¬¸ ê¸€ì“´ì´
-            Q(answer__author__username__icontains=kw)  # ë‹µë³€ ê¸€ì“´ì´
+            Q(subject__icontains=kw) |  # ? œëª?
+            Q(content__icontains=kw) |  # ?‚´?š©
+            Q(answer__content__icontains=kw) |  # ?‹µë³??‚´?š©
+            Q(author__username__icontains=kw) |  # ì§ˆë¬¸ ê¸??“´?´
+            Q(answer__author__username__icontains=kw)  # ?‹µë³? ê¸??“´?´
         ).distinct()
-    paginator = Paginator(question_list, 10)  # í˜ì´ì§€ë‹¹ 10ê°œì”© ë³´ì—¬ì£¼ê¸°
+    paginator = Paginator(question_list, 10)  # ?˜?´ì§??‹¹ 10ê°œì”© ë³´ì—¬ì£¼ê¸°
     page_obj = paginator.get_page(page)
     context = {'question_list': page_obj, 'page': page, 'kw': kw}
     return render(request, 'pybo/question_list.html', context)
