@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger('pybo')
 
 def index(request):
-    logger.info("INFO ·¹º§·Î Ãâ·Â")
+    
     page = request.GET.get('page', '1')  # ?˜?´ì§?
     kw = request.GET.get('kw', '')  # ê²??ƒ‰?–´
     question_list = Question.objects.order_by('-create_date')
