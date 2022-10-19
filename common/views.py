@@ -10,9 +10,13 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)  # ì‚¬ìš©ì ì¸ì¦
-            login(request, user)  # ë¡œê·¸ì¸
+            user = authenticate(username=username, password=raw_password)  # ?‚¬?š©? ?¸ì¦?
+            login(request, user)  # ë¡œê·¸?¸
             return redirect('index')
     else:
         form = UserForm()
     return render(request, 'common/signup.html', {'form': form})
+
+
+def page_not_found(request, exception):
+    return render(request, 'common/404.html', {})

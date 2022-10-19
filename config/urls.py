@@ -7,5 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
-    path('', base_views.index, name='index'),  # '/' ì— í•´ë‹¹ë˜ëŠ” path
+    path('', base_views.index, name='index'),  # '/' ?— ?•´?‹¹?˜?Š” path
 ]
+
+handler404 = 'common.views.page_not_found' 
