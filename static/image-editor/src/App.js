@@ -1,6 +1,6 @@
 import './App.css';
 import React,{useState} from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 
 function App() {//start screen, 로그인 화면
@@ -21,7 +21,7 @@ function App() {//start screen, 로그인 화면
       }
   
       //모든게 일치하면 그 user 정보 return -> 이 return값이 form 컴포넌트 내 fetchLogin 함수 값으로 출력되는것
-      //form 컴포넌트에서 setUser값에 넣어야함
+      
       return user;
     }
   
@@ -74,11 +74,21 @@ function App() {//start screen, 로그인 화면
         <div className="title">Image-Editor</div>
       </header>
       
-      <div class="box">
+      <div className="box">
         <input type="id" placeholder="ID" />
-        <input type="password" placeholder="Password" />
-        <button type = "submit" className="btn-hover-color">로그인</button> //로그인 시 데이터 서버로
-        <button className="btn-hover-color">회원 가입</button> //회원가입 화면, register로
+        <input type="password" placeholder="Password" />      
+        <button type = "submit" className="center">로그인</button> 
+        {/* 로그인 시 데이터 서버로 */}
+        <Link to={{
+          pathname : "/register",
+          state : {
+                    id:null, 
+                    password :null //id, password 값 패러미터로 넘겨줌
+                    }
+          }}>
+          <button>회원 가입</button>
+        </Link> 
+        {/* 회원가입 화면, register로 */}
 
       </div>
 
@@ -86,21 +96,17 @@ function App() {//start screen, 로그인 화면
     </div>
   );
 //main에도 props로 회원 정보 전달해야 함
-  function Register(props){//회원가입 화면, 회원 정보 수정도 겸함
-    //로그인 정보 전달 받으면 회원 정보 수정 아니면 회원가입 
-    if(props===null){//회원가입
-    return(
-    <div>
-      
-    </div>
-  )}
-   else{//회원정보수정
-  return(
-    <div></div>
-  )
- };
-}; 
+
 
 };
-
 export default App;
+//<Link to="/editor">Editor</Link> 페이지 전환하면서 props전달하도록 해야 함. 
+{/* <Link to={{
+  pathname : "/register",
+  state : {
+           id:dd, 
+           password :dd //id, password 값 패러미터로 넘겨줌
+           }
+ }}>
+ <button className="btn-hover-color">회원 가입</button>
+</Link> */} //router 형식
