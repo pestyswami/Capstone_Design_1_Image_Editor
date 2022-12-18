@@ -30,3 +30,5 @@ HTML5에서 추가된 Canvas API를 활용해 웹에서 사용할 수 있는 이
 ## References
 
 ## Reports
+[[LIM]_최종보고서(docx)](https://github.com/pestyswami/Capstone_Design_1_Image_Editor/blob/dev/report/%5BLIM%5DCD1_%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0%EC%84%9C.docx)  
+[[LIM]_최종보고서(pdf)](https://github.com/pestyswami/Capstone_Design_1_Image_Editor/blob/dev/report/%5BLIM%5DCD1_%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
